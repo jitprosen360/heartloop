@@ -1,0 +1,57 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+  }
+  body {
+    @apply bg-white font-sans text-ink;
+  }
+  [id] {
+    scroll-margin-top: 76px;
+  }
+  a,
+  button {
+    -webkit-tap-highlight-color: transparent;
+  }
+}
+
+@layer components {
+  .container-x {
+    @apply mx-auto w-full max-w-[1200px] px-4 sm:px-6 lg:px-8;
+  }
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-xl font-bold transition duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2;
+  }
+  .btn-primary {
+    @apply btn bg-brand-gradient text-white shadow-soft hover:-translate-y-0.5 hover:brightness-105;
+  }
+  .btn-outline {
+    @apply btn border border-brand/40 bg-white text-brand hover:-translate-y-0.5 hover:border-brand hover:bg-brand-soft;
+  }
+  .eyebrow {
+    @apply text-[11px] font-extrabold uppercase tracking-[0.14em] text-brand;
+  }
+  .heading {
+    @apply mt-1.5 text-[28px] font-extrabold leading-tight tracking-tight text-ink sm:text-[34px];
+  }
+  .lead {
+    @apply mt-2 text-[15px] leading-relaxed text-muted;
+  }
+}
+
+/* Elements GSAP animates in stay hidden until it runs (class set by an inline script in layout). */
+.anim [data-hero],
+.anim [data-hero-note],
+.anim [data-reveal] {
+  opacity: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
