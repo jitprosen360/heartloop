@@ -21,7 +21,7 @@ export function LogoMark({ className = 'h-9 w-9', id = 'logo' }) {
 
 export default function Logo({ className = '', id }) {
   return (
-    <a href="#home" aria-label="HeartLoop.in home" className={`flex items-center gap-1.5 ${className}`}>
+    <a href="/#home" aria-label="HeartLoop.in home" className={`flex items-center gap-1.5 ${className}`}>
       <LogoMark id={id} />
       <span className="text-[22px] font-extrabold tracking-tight text-ink">HeartLoop.in</span>
     </a>

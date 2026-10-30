@@ -1,15 +1,18 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
+import { usePathname } from 'next/navigation';
 import { Menu, X } from 'lucide-react';
 import Logo from './Logo';
 import { links, nav } from '@/lib/site';
 
 export default function Header() {
-  const [active, setActive] = useState('home');
+  const [spied, setActive] = useState('home');
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
   const clickLock = useRef(null);
+  // Nav items point at home-page sections, so only highlight one while on the home page.
+  const active = usePathname() === '/' ? spied : null;
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 8);
@@ -68,7 +71,7 @@ export default function Header() {
           {nav.map(({ id, label }) => (
             <a
               key={id}
-              href={`#${id}`}
+              href={`/#${id}`}
               onClick={() => select(id)}
               aria-current={active === id ? 'true' : undefined}
               className={`relative flex h-full items-center text-[14px] font-semibold transition-colors hover:text-brand ${
@@ -115,7 +118,7 @@ export default function Header() {
             {nav.map(({ id, label }) => (
               <a
                 key={id}
-                href={`#${id}`}
+                href={`/#${id}`}
                 onClick={() => select(id)}
                 tabIndex={open ? 0 : -1}
                 className={`rounded-xl px-4 py-3 text-[15px] font-semibold ${

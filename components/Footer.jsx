@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import { Facebook, Heart, Instagram, Linkedin, Youtube } from 'lucide-react';
 import Logo from './Logo';
 
@@ -11,10 +12,10 @@ function XIcon(props) {
 
 // Replace the placeholder hrefs with real pages and profiles.
 const pages = [
-  { label: 'Privacy', href: '#' },
+  { label: 'Privacy Policy', href: '/privacy-policy', route: true },
   { label: 'Terms', href: '#' },
   { label: 'Contact', href: '#' },
-  { label: 'FAQ', href: '#faq' },
+  { label: 'FAQ', href: '/#faq' },
 ];
 
 const socials = [
@@ -39,11 +40,14 @@ export default function Footer() {
         </div>
 
         <nav aria-label="Footer" className="flex flex-wrap gap-x-8 gap-y-3 text-[13px] font-semibold text-ink/80">
-          {pages.map(({ label, href }) => (
-            <a key={label} href={href} className="transition-colors hover:text-brand">
-              {label}
-            </a>
-          ))}
+          {pages.map(({ label, href, route }) => {
+            const Tag = route ? Link : 'a';
+            return (
+              <Tag key={label} href={href} className="transition-colors hover:text-brand">
+                {label}
+              </Tag>
+            );
+          })}
         </nav>
 
         <div className="flex items-center gap-4">
